@@ -47,8 +47,8 @@ exports.handler = async function(event) {
   let listing1 = await db.collection('listings').add({ 
     title: `Perfect investing opportunity! Luxury apartment in Chicago at discounted price.`,
     subtitle: `Experienced landlord with over 5 properties under management looking for coinvestors.`,
-    imageURL: ``,
-    address: `3900  N Lake Shore Dr, Apt 3A, Chicago IL, 60613`,
+    imageURL: `https://photos.zillowstatic.com/fp/921a77c6a794a3fdb6198fa8f5ddf219-cc_ft_768.jpg`,
+    address: `3900  N Lake Shore Dr, Apt 3A, Chicago IL 60613`,
     description: `2 bedrooms, 2 bathrooms, 1,250 sqft. Multiple ammenities.`,
     capitalAskAmount: 100000.00,
     capitalRaisedAmount: 90000.00,
@@ -61,6 +61,43 @@ exports.handler = async function(event) {
     // equityHolderName: `Jake Green`,
     created: firebase.firestore.FieldValue.serverTimestamp() 
   })
+
+  let listing2 = await db.collection('listings').add({ 
+    title: `Buying luxury studio apartment in north side of Chicago for rental.`,
+    subtitle: `Ex-consultant starting a property managment company, looking for coinvestors.`,
+    imageURL: `https://photos.zillowstatic.com/fp/9c5a708622b934e6ffa5d6406c76ea05-cc_ft_768.jpg`,
+    address: `202 W Hill St, Apt 501 Chicago, IL 60610`,
+    description: `Studio, 520 sqft. Multiple ammenities.`,
+    capitalAskAmount: 50000.00,
+    capitalRaisedAmount: 40000.00,
+    communityOwnership: 0.20,
+    propertyValue: 120000.00,
+    capRate: 0.07,
+    holdingTimeYears: 10,
+    expectedMonthlyRent: 1120.00,
+    backers: 5, // will probably need to be it's own collection (similar to likes)
+    // equityHolderName: `Jake Green`,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let listing3 = await db.collection('listings').add({ 
+    title: `Multi-family home to be converted into hostel, looking for equity parters for expansion.`,
+    subtitle: `Experienced botique hostel company with over 10 properties under management looking for coinvestors.`,
+    imageURL: `https://photos.zillowstatic.com/fp/ce8ac06c9ad73890dbc37e005284350f-cc_ft_1536.jpg`,
+    address: `8210 S Maryland Ave, Chicago, IL 60619`,
+    description: `9 bedrooms, 3 bathrooms, 3,250 sqft. Duplex layout.`,
+    capitalAskAmount: 300000.00,
+    capitalRaisedAmount: 150000.00,
+    communityOwnership: 0.10,
+    propertyValue: 479000.00,
+    capRate: 0.07,
+    holdingTimeYears: 20,
+    expectedMonthlyRent: 2600.00,
+    backers: 30, // will probably need to be it's own collection (similar to likes)
+    // equityHolderName: `Jake Green`,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
   // Create new fundraisers
   let fundraiser1 = await db.collection('fundraisers').add({ 
     fundraiserName: `Jake Green`,
@@ -68,10 +105,50 @@ exports.handler = async function(event) {
     created: firebase.firestore.FieldValue.serverTimestamp() 
   })
 
+  let fundraiser2 = await db.collection('fundraisers').add({ 
+    fundraiserName: `Jane White`,
+    fundraiserId: ``, // we may need to create these beforehand. Not sure we can generate random values.
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let fundraiser3 = await db.collection('fundraisers').add({ 
+    fundraiserName: `HostelCo`,
+    fundraiserId: ``, // we may need to create these beforehand. Not sure we can generate random values.
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
   // Create new reviews for fundraisers
   let fundraiserReview1 = await db.collection('fundraiserReviews').add({ 
-    fundraiserId: `Jake Green`,
+    fundraiserId: ``,
     body: `Great landlord`,
+    rating: 5,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let fundraiserReview2 = await db.collection('fundraiserReviews').add({ 
+    fundraiserId: ``,
+    body: `Great to work with, but could be a bit more responsive with questions.`,
+    rating: 4,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let fundraiserReview3 = await db.collection('fundraiserReviews').add({ 
+    fundraiserId: ``,
+    body: `Definitely still learning the ropes, but very knowlegable and hardworking.`,
+    rating: 4,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let fundraiserReview4 = await db.collection('fundraiserReviews').add({ 
+    fundraiserId: ``,
+    body: `Great to work with!`,
+    rating: 5,
+    created: firebase.firestore.FieldValue.serverTimestamp() 
+  })
+
+  let fundraiserReview5 = await db.collection('fundraiserReviews').add({ 
+    fundraiserId: ``,
+    body: `Exceptional business model. Very professional.`,
     rating: 5,
     created: firebase.firestore.FieldValue.serverTimestamp() 
   })
