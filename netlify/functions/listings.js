@@ -12,7 +12,7 @@ exports.handler = async function(event) {
   let db = firebase.firestore()
 
   // perform a query against firestore for all listings, wait for it to return, store in memory
-  let listingsQuery = await db.collection(`listings`).orderBy(`created`, `desc`).get()
+  let listingsQuery = await db.collection(`listings`).get()
 
   // retrieve the documents from the query
   let listings = listingsQuery.docs

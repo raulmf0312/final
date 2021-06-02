@@ -35,7 +35,76 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Write the json-formatted data to the console in Chrome
     console.log(json)
 
+    // Grab a reference to the element with class name "listings" in memory
+    let listingDiv = document.querySelector(`.listings`)
+
+    // Loop through the JSON data, for each Object representing a listing:
+    for (let i=0; i < json.length; i++) {
+          // Store each object ("listing") in memory
+          let listing = json[i]
+
+          // Store the listing's ID in memory
+          // let listingId = listing.id
+          // let listingTitle = listing.title
+          // let listingImage = listing.imageUrl
+          // let listingAddress = listing.address
+          // let listingDescription = listing.description
+          // let listingAsk = listing.capitalAskAmount
+          // let listingRaised = listing.capitalRaisedAmount
+          // let listingComOwn = listing.communityOwnership
+          // let listingValue = listing.propertyValue
+          // let listingRate = listing.capRate
+          // let listingHoldTime = listing.holdingTimeYears  
+          // let listingRent = listing.expectedMonthlyRent
+          // let listingBackers = listing.backers
     
+          // Create some markup using the listing data, insert into the "listings" element
+          listingDiv.insertAdjacentHTML(`beforeend`, `
+            <div class="md:mt-16 mt-8">
+              <div class="md:mx-0 mx-4 mt-8">
+                <span class="font-bold text-xl">${listing.title}</span>
+              </div>
+          
+              <div class="my-8">
+                <img src="${listing.imageUrl}" class="w-full">
+              </div>
+    
+              <div class="text-3xl md:mx-0 mx-4 mb-4">
+
+              <div class="text-2xl md:mx-0 mx-4 mb-4">
+                <button id="learn-more-about-${listing.id}">Learn more about ${listing.address}!</button>
+               </div>
+
+              </div>
+              
+            </div>
+            `)
+    
+    // get a reference to the "Learn More" button        
+    let learnMoreButton = document.querySelector(`#learn-more-about-${listing.id}`)
+
+    // handle the clicking of the "Learn More" button
+    learnMoreButton.addEventListener(`click`, async function(event) {
+      event.preventDefault()
+      
+      //switch the user to the learn more page
+      document.location.href = `learnmore.html`
+
+      //create the URL for our learn_more lambda function and give it the listing.id parameter from the button
+      let url = `/.netlify/functions/learn_more?listingId=${listing.id}`
+
+      // fetch the URL for our learn_more lambda function
+      response = await fetch(url)
+
+      //log the response to see what we are being returned
+      console.log(response)
+
+      //still need to set innerHTML of an element on learnmore.html so that the page has content
+      //this will have to wait until the response is ironed out
+      })
+
+    }
+
   } else {
     // Signed out
     console.log('signed out')
