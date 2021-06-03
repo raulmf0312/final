@@ -1,7 +1,6 @@
 // Goal: Provide a function to fill learnmore.html
 // allows us to use firebase
-let firebase = require(`./firebase`)
-
+let firebase = require(`./netlify/functions/firebase`)
 
 exports.handler = async function(event) {
 
@@ -29,6 +28,8 @@ exports.handler = async function(event) {
     subtitle: listingData.subtitle,
     imageUrl: listingData.imageUrl,
   }
+
+  console.log(returnValue)
 
   return {
     statusCode: 200,

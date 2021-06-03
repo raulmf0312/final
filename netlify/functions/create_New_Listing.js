@@ -11,6 +11,7 @@ console.log (event)
   // get all the querystring parameters and store in memory
   let fundraiserName= event.queryStringParameters.fundraiserName
   let fundraiserId= event.queryStringParameters.fundraiserId
+  let title=event.queryStringParameters.title
   let subtitle= event.queryStringParameters.subtitle
   let imageUrl= event.queryStringParameters.imageUrl
   let address= event.queryStringParameters.address
@@ -29,9 +30,10 @@ let capRate= expectedMonthlyRent*12/propertyValue
  let db= firebase.firestore()
 
   // create a new post
-await db.collection (`posts`).add({
+await db.collection (`listings`).add({
   fundraiserName: fundraiserName,
   fundraiserId: fundraiserId,
+  title: title,
   subtitle: subtitle,
   imageUrl: imageUrl, 
   address: address,

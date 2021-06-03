@@ -81,13 +81,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
         // create the URL for our "create post" lambda function
-        let url = `/.netlify/functions/create_New_Lisitng?fundraiserName=${user.displayName}&fundraiserId=${user.uid}&subtitle=${subtitle}&imageUrl=${imageUrl}&address=${address}&propertyDescription=${propertyDescription}&landlordDescription=${landlordDescription}&capitalAskAmount=${capitalAskAmount}&propertyValue=${propertyValue}&=${holdingTimeYears}&expectedMonthlyRent=${expectedMonthlyRent}`
+        let url = `/.netlify/functions/create_New_Listing?fundraiserName=${user.displayName}&fundraiserId=${user.uid}&title=${title}&subtitle=${subtitle}&imageUrl=${imageUrl}&address=${address}&propertyDescription=${propertyDescription}&landlordDescription=${landlordDescription}&capitalAskAmount=${capitalAskAmount}&propertyValue=${propertyValue}&=${holdingTimeYears}&expectedMonthlyRent=${expectedMonthlyRent}`
   
         // fetch the URL, wait for the response, store the response in memory
         let response = await fetch(url)
-  
+        
         // refresh the page
-        location.reload()
+        //location.reload()
       })
   // End of OUR Team's code
 

@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       event.preventDefault()
       
       //switch the user to the learn more page
-      document.location.href = `learnmore.html`
+      document.location.href = `learnmore.html?listingId=${listing.id}`
 
       //create the URL for our learn_more lambda function and give it the listing.id parameter from the button
       let url = `/.netlify/functions/learn_more?listingId=${listing.id}`
