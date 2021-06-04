@@ -78,8 +78,11 @@ firebase.auth().onAuthStateChanged(async function(user) {
         // get a reference to the input holding the expected monthtly rent
         let expectedMonthlyRentInput = document.querySelector(`#expectedMonthlyRent`)
         let expectedMonthlyRent = expectedMonthlyRentInput.value
-
-
+        
+        if (title=='' || subtitle=='' || imageUrl=='' || address=='' || propertyDescription=='' || landlordDescription=='' || capitalAskAmount=='' || propertyValue=='' || holdingTimeYears=='' || expectedMonthlyRent=='' ){ 
+        window.alert("You are missing fields. Please enter all fields correctly");
+      }
+      else {
         // create the URL for our "create post" lambda function
         let url = `/.netlify/functions/create_New_Listing?fundraiserName=${user.displayName}&fundraiserId=${user.uid}&title=${title}&subtitle=${subtitle}&imageUrl=${imageUrl}&address=${address}&propertyDescription=${propertyDescription}&landlordDescription=${landlordDescription}&capitalAskAmount=${capitalAskAmount}&propertyValue=${propertyValue}&holdingTimeYears=${holdingTimeYears}&expectedMonthlyRent=${expectedMonthlyRent}`
   
@@ -88,7 +91,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         // refresh the page
         document.location.href = `index.html`
-
+      }
       })
   // End of OUR Team's code
 
