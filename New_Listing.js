@@ -87,7 +87,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let response = await fetch(url)
 
         // refresh the page
-        //location.reload()
+        document.location.href = `index.html`
+
       })
   // End of OUR Team's code
 
