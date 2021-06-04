@@ -7,20 +7,22 @@ let firebase = require(`./firebase`)
 //&subtitle=${subtitle}&imageUrl=${imageUrl}&address=${address}&propertyDescription=${propertyDescription}
 //&landlordDescription=${landlordDescription}&capitalAskAmount=${capitalAskAmount}&propertyValue=${propertyValue}&=${holdingTimeYears}&expectedMonthlyRent=${expectedMonthlyRent}`
 exports.handler = async function(event) {
-console.log (event)
+
+//console.log (event)
+
   // get all the querystring parameters and store in memory
-  let fundraiserName= event.queryStringParameters.fundraiserName
-  let fundraiserId= event.queryStringParameters.fundraiserId
-  let title=event.queryStringParameters.title
-  let subtitle= event.queryStringParameters.subtitle
-  let imageUrl= event.queryStringParameters.imageUrl
-  let address= event.queryStringParameters.address
-  let propertyDescription= event.queryStringParameters.propertyDescription
-  let landlordDescription= event.queryStringParameters.landlordDescription
-  let capitalAskAmount= event.queryStringParameters.capitalAskAmount
-  let propertyValue= event.queryStringParameters.propertyValue
-  let holdingTimeYears= event.queryStringParameters.holdingTimeYears
-  let expectedMonthlyRent= event.queryStringParameters.expectedMonthlyRent
+  let fundraiserName = event.queryStringParameters.fundraiserName
+  let fundraiserId = event.queryStringParameters.fundraiserId
+  let title = event.queryStringParameters.title
+  let subtitle = event.queryStringParameters.subtitle
+  let imageUrl = event.queryStringParameters.imageUrl
+  let address = event.queryStringParameters.address
+  let propertyDescription = event.queryStringParameters.propertyDescription
+  let landlordDescription = event.queryStringParameters.landlordDescription
+  let capitalAskAmount = event.queryStringParameters.capitalAskAmount
+  let propertyValue = event.queryStringParameters.propertyValue
+  let holdingTimeYears = event.queryStringParameters.holdingTimeYears
+  let expectedMonthlyRent = event.queryStringParameters.expectedMonthlyRent
 
 //calculate the rest of the variables
 let communityOwnership=capitalAskAmount/propertyValue
