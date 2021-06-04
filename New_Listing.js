@@ -85,7 +85,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
         // fetch the URL, wait for the response, store the response in memory
         let response = await fetch(url)
-        
+
         // refresh the page
         //location.reload()
       })

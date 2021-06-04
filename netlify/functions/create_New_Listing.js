@@ -50,6 +50,21 @@ await db.collection (`listings`).add({
   created: firebase.firestore.FieldValue.serverTimestamp()
 })
 
+ // query for an existing like, wait for it to return, store the query in memory
+ let fundraiserQuery = await db.collection('fundraisers')
+ .where('fundraiserId', '==', fundraiserId)
+ .get()
+// get the current number of fundraisers under that ID (can only be one)                          
+let numberOfFundraisers = fundraiserQuery.size
+// create a new post
+if (numberOfFundraisers==0){
+await db.collection (`fundraisers`).add({
+fundraiserName: fundraiserName,
+fundraiserId: fundraiserId,
+created: firebase.firestore.FieldValue.serverTimestamp()
+})
+}
+
 
   return {
     statusCode: 200
