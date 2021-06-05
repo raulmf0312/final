@@ -6,80 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Listing</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
-    <h1 class="text-left p-2 font-bold text-4xl">Enter your listing and get ready to secure funding!</h1>
 </head>
 <body>
-    
-    <div class="flex items-center">
-        <div class="md:mx-0 mx-4"><span class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-purple-500">Real Estate Kickstarter ;)</span></div>
-        <div class="ml-auto text-sm sign-in-or-sign-out"></div>
+    <div class="m-2 bg-gray-100 bg-opacity-25 font-serif text-gray-600 text-lg">
+    <div class="flex justify-center">
+        <div class="mt-8 mr-8"><span class="font-serif text-4xl bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-500">Real Estate Kickstarter</span></div>
+        <div class="mt-12 text-m sign-in-or-sign-out"></div>
       </div>
 
-    <ul class="md: p-2 bg-gray-100 text-gray-700">
-        <li>Need help with your lisiting?</li>
+      <h1 class="text-center text-gray-500 font-serif p-2 text-2xl">Enter your listing and get ready to secure funding!</h1>
+
+    <ul class="m-4 p-4 bg-gray-100 text-gray-600">
+        <li>Need help with your listing?</li>
         <li>Contact us at: </li>
         <li>Phone:  (352) 255-3385</li>
         <li>Email: <a href="mailto: juanpablo.alba@kellogg.northwestern.edu">help@getreal.io</a></li>
     </ul>
-    <h1 class="text-2xl font-bold">Please fill in all the following fields:</h1>
+    <h1 class="text-2xl ">Please fill in all of the following fields:</h1>
     <form netlify class="p-2">
         <div>
-        <label class="block mt-4 font-bold" for="name">Listing Title</label>
+        <label class="block mt-4 " for="name">Listing title</label>
         <input  type="text" id="title" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Post subtitle (one or two short sentences summarizing the opportunity)</label>
+        <label class="block mt-4 " for="favorite-color">Post subtitle (one or two short sentences summarizing the opportunity)</label>
         <input type="text" id="subtitle" class="p-2 w-80 py-2 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Image url (as address)</label>
+        <label class="block mt-4 " for="favorite-color">Image URL (as address)</label>
         <input  type="text" id="imageUrl" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Property address</label>
+        <label class="block mt-4 " for="favorite-color">Property address</label>
         <input  type="text" id="address" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Description of property</label>
+        <label class="block mt-4 " for="favorite-color">Description of property</label>
         <input type="text" id="propertyDescription" class="p-2 w-80 py-4 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Description of you as a landlord (include past experience with real estate, studies, main form of employent, and anything that you think qualifies you as a Real Estate investo/landlord) </label>
+        <label class="block mt-4 " for="favorite-color">Description of you as a landlord (include past experience with real estate, studies, main form of employent, and anything that you think qualifies you as a Real Estate investor/landlord) </label>
         <input type="text" id="landlordDescription" class="p-2 w-80 py-4 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">How much money are you looking to raise from the community?</label>
+        <label class="block mt-4 " for="favorite-color">How much money are you looking to raise from the community?</label>
         <input  type="text" id="capitalAskAmount" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">What is the value of the property you are looking to buy or that you own?</label>
+        <label class="block mt-4 " for="favorite-color">What is the value of the property you are looking to buy or that you own?</label>
         <input  type="text" id="propertyValue" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Enter the expected number of years you plan to hold the investment before selling</label>
+        <label class="block mt-4 " for="favorite-color">Enter the expected number of years you plan to hold the investment before selling</label>
         <input  type="text" id="holdingTimeYears" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
     <div>
-        <label class="block mt-4 font-bold" for="favorite-color">Enter the expected monthly rent from the property</label>
+        <label class="block mt-4 " for="favorite-color">Enter the expected monthly rent from the property</label>
         <input  type="text" id="expectedMonthlyRent" class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
     </div>
 
 
-        <button id="submitButton" class="block mt-4 text-white bg-purple-500 rounded px-4 py-2">Submit</button>
+        <button id="submitButton" class="block mt-4 text-white bg-gray-500 rounded px-4 py-2">Submit</button>
       </form>
 
 
 <!-- Back to homepage -->
-<div id="backHomepage" class="underline font-bold text-blue-700"><a href="index.html">Back to Homepage!</a></div>
+<div id="backHomepage" class="underline text-gray-500"><a href="index.html">Back to Homepage!</a></div>
 
 
 
@@ -113,5 +114,6 @@
   </script>
 
   <script src="New_Listing.js"></script>
+  </div>
 </body>
 </html>

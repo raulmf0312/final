@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // Build the markup for the sign-out button and set the HTML in the header
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
-      <button class="text-pink-500 underline sign-out">Sign Out</button>
+      <button class="text-gray-500 underline sign-out">Sign Out</button>
     `
 
     // get a reference to the sign out button
@@ -27,21 +27,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // create a "Submit a New Listing" button to connect to New_Listing.html
     let newListingButton = document.querySelector(`.newListing`)
     
-    newListingButton.innerHTML = ` <button id="new-listing" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Listing.html">Submit a New Listing</a></button>`
+    newListingButton.innerHTML = ` <button id="new-listing" class="m-4 py-2 px-4 rounded-md shadow-lg font-light text-gray-500 ring-1 font-serif ring-gray-600 ring-opacity-25 focus:outline-none"><a href="New_Listing.html">Submit a New Listing</a></button>`
     
     // create a "Submit a Review" button to connect to New_Listing.html
-    let newReviewButton = document.querySelector(`.newReview`)
-    
-    newReviewButton.innerHTML = ` <button id="new-review" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Review.html">Submit a New Review</a></button>`
-
-
-    //let seeAllButton = document.querySelector(`.seeAll`)
-    
-    //seeAllButton.innerHTML = ` <button id="see-all" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">See All Listings</button>`
-
-    // handle the clicking of the "Learn More" button
-    //seeAllButton.addEventListener(`click`, async function(event) {
-    //  event.preventDefault()
     
     // Build the URL for our listings API
     let url = `/.netlify/functions/listings`
@@ -67,19 +55,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
           // Create some markup using the listing data, insert into the "listings" element
           listingDiv.insertAdjacentHTML(`beforeend`, `
-            <div class="m-8">
-              <div class="text-center">
-                <span class="text-5x1 font-serif italic text-gray-600">${listing.title}</span>
+            <div class="mb-10 bg-gray-100 bg-opacity-75">
+              <div class="pt-6 text-center">
+                <span class="font-ultralight text-2xl text-gray-600 font-serif">${listing.title}</span>
               </div>
           
-              <div class="ml-16 mr-16 w-100 h-100">
-                <img src="${listing.imageUrl}" class="w-full">
+              <div class="m-8 flex justify-center">
+                <img src="${listing.imageUrl}" class="shadow-xl text-center w-200 h=200">
               </div>
     
-              <div class="text-3xl md:mx-0 mx-4 mb-4">
+              <div class="m-4">
 
               <div class="text-center">
-                <button id="learn-more-about-${listing.id}">Learn more about ${listing.address}!</button>
+                <button id="learn-more-about-${listing.id}" class="text-xl animate-bounce text-gray-600 font-serif">Learn more about ${listing.address}!</button>
                </div>
 
               </div>
@@ -109,59 +97,65 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // build the HTML for the reutn to homepage as well as all the details appearing for the learn more button
       listingDiv.innerHTML = `
-      <div class="md:mt-16 mt-8">
-
-      <div class="underline font-bold text-blue-700"><a href="index.html">Back to Homepage!</a></div>
-
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">${listing.title}</span>
+      <div class="text-center font-serif underline text-gray-500"><a href="index.html">Back to Homepage!</a></div>
+      
+      <div class="p-4 m-4 bg-gray-100 bg-opacity-75 font-serif font-light text-gray-600 text-center">
+        <div class="text-center">
+          <span class="text-4xl">${listing.title}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">${listing.subtitle}</span>
+        <div class="text-center md:mx-0 mx-4 mt-4">
+          <span class="text-xl italic">${listing.subtitle}</span>
         </div>
     
-        <div class="my-8">
-          <img src="${listing.imageUrl}" class="w-full">
+        <div class="my-8 flex justify-center">
+          <img src="${listing.imageUrl}" class="w-200 h-200">
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">Address: ${listing.address}</span>
+        <div class="md:mx-0 mx-4 mt-4">
+          <span class="text-l font-bold">Address:</span>
+          <span class="text-l italic">${listing.address}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">Holding Time Years: ${listing.holdingTimeYears}</span>
+        <div class="md:mx-0 mx-4 mt-4">
+          <span class="text-l font-bold">Holding Time Years:</span>
+          <span class="text-l italic">${listing.holdingTimeYears}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">Current Property Value: ${listing.propertyValue}</span>
+        <div class="md:mx-0 mx-4 mt-4">
+          <span class="text-l font-bold">Current Property Value:</span>
+          <span class="text-l italic">${listing.propertyValue}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-          <span class="font-bold text-xl">Expected Monthly Rent: ${listing.expectedMonthlyRent}</span>
+        <div class="md:mx-0 mx-4 mt-4">
+          <span class="text-l font-bold">Expected Monthly Rent:</span>
+          <span class="text-l italic">${listing.expectedMonthlyRent}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Property Description: ${listing.propertyDescription}</span>
+        <div class="md:mx-0 mx-4 mt-4">
+          <span class="text-l font-bold">Property Description:</span>
+          <span class="text-l italic">${listing.propertyDescription}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8 bg-gray-300 pl-8 pr-8">
+        <div class=" mx-4 mt-8 bg-gray-300">
 
-          <div class="md:mx-0 mx-4 mt-8 pt-2">
-          <span class="font-bold text-xl">Fundraiser Name: ${listing.fundraiserName}</span>
+          <div class="md:mx-0 mx-4 mt-16 pt-2">
+            <span class="text-l font-bold">Fundraiser Name:</span>
+            <span class="text-l italic">${listing.fundraiserName}</span>
           </div>
 
-          <div class="md:mx-0 mx-4 mt-8 pb-2">
-          <span class="font-bold text-xl">Fundraiser Description: ${listing.landlordDescription}</span>
+          <div class="md:mx-0 mx-4 mt-4 pb-2">
+            <span class="text-l font-bold">Fundraiser Description:</span>
+            <span class="text-l italic">${listing.landlordDescription}</span>
           </div>
 
-          <div class="md:mx-0 mx-4 mt-8 pb-2">
-          <span class="font-bold text-2xl pb-3">Reviews:</span>
+          <div class="md:mx-0 mx-4 mt-4 pb-2">
+          <span class="font-bold text-xl pb-3">Reviews:</span>
           ${reviews}
 
           <form class="mt-4">
-            <input type="text" id="review-body-${listing.fundraiserId}" class="mr-2 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Add a review...">
-            <input type="number" id="review-rating-${listing.fundraiserId}" class="mr-2 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Out of 5 stars">
+            <input type="text" id="review-body-${listing.fundraiserId}" class=" mr-2 rounded-lg border px-2 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Add a review...">
+            <input type="number" id="review-rating-${listing.fundraiserId}" class="mr-2 rounded-lg border px-2 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Out of 5 stars">
             <button id="listing-review-button-${listing.fundraiserId}" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">Post</button>
           </form>
 

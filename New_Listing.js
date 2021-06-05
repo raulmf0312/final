@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
       // Build the markup for the sign-out button and set the HTML in the header
       document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
-        <button class="text-pink-500 underline sign-out">Sign Out</button>
+        <button class="text-gray-500 underline sign-out">Sign Out</button>
       `
   
       // get a reference to the sign out button
