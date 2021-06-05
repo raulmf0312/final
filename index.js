@@ -23,17 +23,26 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
+
+    // create a "Submit a New Listing" button to connect to New_Listing.html
     let newListingButton = document.querySelector(`.new`)
     
-    newListingButton.innerHTML = ` <button id="new-listing" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Listing.html">Add a New Listing</a></button>`
+    newListingButton.innerHTML = ` <button id="new-listing" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Listing.html">Submit a New Listing</a></button>`
     
-    let seeAllButton = document.querySelector(`.seeAll`)
+    // create a "Submit a Review" button to connect to New_Listing.html
+    let newReviewButton = document.querySelector(`.newReview`)
     
-    seeAllButton.innerHTML = ` <button id="see-all" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">See All Listings</button>`
+    newReviewButton.innerHTML = ` <button id="new-review" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Review.html">Submit a New Review</a></button>`
+
+
+
+    //let seeAllButton = document.querySelector(`.seeAll`)
+    
+    //seeAllButton.innerHTML = ` <button id="see-all" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">See All Listings</button>`
 
     // handle the clicking of the "Learn More" button
-    seeAllButton.addEventListener(`click`, async function(event) {
-      event.preventDefault()
+    //seeAllButton.addEventListener(`click`, async function(event) {
+    //  event.preventDefault()
     
     // Build the URL for our posts API
     let url = `/.netlify/functions/listings`
@@ -87,37 +96,53 @@ firebase.auth().onAuthStateChanged(async function(user) {
     learnMoreButton.addEventListener(`click`, async function(event) {
       event.preventDefault()
 
+      // build the HTML for the reutn to homepage as well as all the details appearing for the learn more button
       listingDiv.innerHTML = `
       <div class="md:mt-16 mt-8">
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">${listing.title}</span>
-      </div>
 
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">${listing.subtitle}</span>
-      </div>
-  
-      <div class="my-8">
-        <img src="${listing.imageUrl}" class="w-full">
-      </div>
+      <div class="underline font-bold text-blue-700"><a href="index.html">Back to Homepage!</a></div>
 
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Address: ${listing.address}</span>
-      </div>
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">${listing.title}</span>
+        </div>
 
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Holding Time: ${listing.holdingTimeYears}</span>
-      </div>
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">${listing.subtitle}</span>
+        </div>
+    
+        <div class="my-8">
+          <img src="${listing.imageUrl}" class="w-full">
+        </div>
 
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Current Property Value: ${listing.propertyValue}</span>
-      </div>
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">Address: ${listing.address}</span>
+        </div>
 
-      <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Expected Monthly Rent: ${listing.expectedMonthlyRent}</span>
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">Holding Time Years: ${listing.holdingTimeYears}</span>
+        </div>
+
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">Current Property Value: ${listing.propertyValue}</span>
+        </div>
+
+        <div class="md:mx-0 mx-4 mt-8">
+          <span class="font-bold text-xl">Expected Monthly Rent: ${listing.expectedMonthlyRent}</span>
+        </div>
+
+        <div class="md:mx-0 mx-4 mt-8">
+        <span class="font-bold text-xl">Property Description: ${listing.propertyDescription}</span>
+        </div>
+
+        <div class="md:mx-0 mx-4 mt-8">
+        <span class="font-bold text-xl">Fundraiser Name: ${listing.fundraiserName}</span>
+        </div>
+
+        <div class="md:mx-0 mx-4 mt-8">
+        <span class="font-bold text-xl">Fundraiser Description: ${listing.landlordDescription}</span>
+        </div>
+
       </div>
-      
-    </div>
     `
 
       
@@ -125,7 +150,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
   }
     
-})
+//})
 
   
 
