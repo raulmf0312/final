@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
     // create a "Submit a New Listing" button to connect to New_Listing.html
-    let newListingButton = document.querySelector(`.new`)
+    let newListingButton = document.querySelector(`.newListing`)
     
     newListingButton.innerHTML = ` <button id="new-listing" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none"><a href="New_Listing.html">Submit a New Listing</a></button>`
     
@@ -88,7 +88,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
             </div>
             `)
     
-    
+    // Create an empty string for the comments
+    let reviews = ``
+
+    // Loop through the post's comments
+    for (let i=0; i < listing.reviews.length; i++) {
+      // Create a variable for each comment
+      let review = listing.reviews[i]
+
+      // Add HTML markup for the comment to the comment string
+      reviews = reviews + `<div><strong>${review.userName}: </strong> ${review.body} (${review.rating} out of 5 stars)</div>`
+    }
+
+
     // get a reference to the "Learn More" button        
     let learnMoreButton = document.querySelector(`#learn-more-about-${listing.id}`)
 
@@ -134,17 +146,25 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <span class="font-bold text-xl">Property Description: ${listing.propertyDescription}</span>
         </div>
 
-        <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Fundraiser Name: ${listing.fundraiserName}</span>
-        </div>
+        <div class="md:mx-0 mx-4 mt-8 bg-gray-300">
 
-        <div class="md:mx-0 mx-4 mt-8">
-        <span class="font-bold text-xl">Fundraiser Description: ${listing.landlordDescription}</span>
+          <div class="md:mx-0 mx-4 mt-8 pt-2">
+          <span class="font-bold text-xl">Fundraiser Name: ${listing.fundraiserName}</span>
+          </div>
+
+          <div class="md:mx-0 mx-4 mt-8 pb-2">
+          <span class="font-bold text-xl">Fundraiser Description: ${listing.landlordDescription}</span>
+          </div>
+
+          <div class="md:mx-0 mx-4 mt-8 pb-2">
+          <span class="font-bold text-2xl pb-3">Reviews:</span>
+          ${reviews}
+          </div>
+
         </div>
 
       </div>
     `
-
       
     })
     

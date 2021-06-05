@@ -1,4 +1,4 @@
-// Goal: Provide a function to return all listings and their comments from Firebase.
+// Goal: Provide a function to return all listings and their reviews from Firebase.
 
 // allows us to use firebase
 let firebase = require(`./firebase`)
@@ -42,45 +42,51 @@ exports.handler = async function(event) {
       description: listingData.description,
       expectedMonthlyRent: listingData.expectedMonthlyRent,
       fundraiserName: listingData.fundraiserName,
+      fundraiserId: listingData.fundraiserId,
       holdingTimeYears: listingData.holdingTimeYears,
       landlordDescription: listingData.landlordDescription,
       propertyDescription: listingData.propertyDescription,
       propertyValue: listingData.propertyValue,
       title: listingData.title,
       subtitle: listingData.subtitle,
-      //userName: listingData.userName,
       imageUrl: listingData.imageUrl,
-      //comments: []
+      reviews: []
     }
 
-    // get the comments for this listing, wait for it to return, store in memory
-    //let commentsQuery = await db.collection(`comments`).where(`listingId`, `==`, listingId).get()
+    console.log(listingObject.fundraiserId)
+
+    // get the reviews for this listing, wait for it to return, store in memory
+    let reviewsQuery = await db.collection(`fundraiserReviews`).where(`fundraiserId`, `==`, listingObject.fundraiserId).get()
 
     // get the documents from the query
-    //let comments = commentsQuery.docs
+    let reviews = reviewsQuery.docs
 
-    // loop through the comment documents
-    // for (let commentIndex=0; commentIndex < comments.length; commentIndex++) {
-    //   // get the id from the comment document
-    //   let commentId = comments[commentIndex].id
+    // loop through the review documents
+    for (let reviewIndex=0; reviewIndex < reviews.length; reviewIndex++) {
 
-    //   // get the data from the comment document
-    //   let commentData = comments[commentIndex].data()
+       // get the id from the review document
+       let reviewId = reviews[reviewIndex].id
 
-    //   // create an Object to be added to the comments Array of the listing
-    //   let commentObject = {
-    //     id: commentId,
-    //     userName: commentData.userName,
-    //     body: commentData.body
-    //   }
+       // get the data from the review document
+       let reviewData = reviews[reviewIndex].data()
 
-    //   // add the Object to the listing
-    //   listingObject.comments.push(commentObject)
-    // }
+       // create an Object to be added to the reviews Array of the listing
+       let reviewObject = {
+         id: reviewId,
+         userName: reviewData.userName,
+         body: reviewData.body,
+         rating: reviewData.rating
+       }
+
+       // add the Object to the listing
+       listingObject.reviews.push(reviewObject)
+     }
 
     // add the Object to the return value
     returnValue.push(listingObject)
   }
+
+  console.log(returnValue)
 
   // return value of our lambda
   return {
