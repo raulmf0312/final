@@ -53,8 +53,6 @@ exports.handler = async function(event) {
       reviews: []
     }
 
-    console.log(listingObject.fundraiserId)
-
     // get the reviews for this listing, wait for it to return, store in memory
     let reviewsQuery = await db.collection(`fundraiserReviews`).where(`fundraiserId`, `==`, listingObject.fundraiserId).get()
 
@@ -85,8 +83,6 @@ exports.handler = async function(event) {
     // add the Object to the return value
     returnValue.push(listingObject)
   }
-
-  console.log(returnValue)
 
   // return value of our lambda
   return {
