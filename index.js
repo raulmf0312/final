@@ -137,6 +137,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <span class="text-l italic">${listing.propertyDescription}</span>
         </div>
 
+        <button id="fund-now" class="m-4 py-4 px-8 rounded-md shadow-lg font-light text-green-500 ring-1 font-serif ring-gray-600 ring-opacity-25 focus:outline-none">Fund now!</a></button>
+
         <div class=" mx-4 mt-8 bg-gray-300">
 
           <div class="md:mx-0 mx-4 mt-16 pt-2">
