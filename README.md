@@ -6,6 +6,16 @@ Website: https://priceless-torvalds-03299b.netlify.app/index.html
 
 GitHub: https://github.com/raulmf0312/final 
 
+Firebase:
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDXiVoOX73Lp1szE3zgYfuwDbcRPPxudgc",
+    authDomain: "final-project-ab3e0.firebaseapp.com",
+    projectId: "final-project-ab3e0",
+    storageBucket: "final-project-ab3e0.appspot.com",
+    messagingSenderId: "1057040828035",
+    appId: "1:1057040828035:web:2919f59408be81b7207db6"
+
 Team: 
 Jason Davis
 Juan Pablo Alba
