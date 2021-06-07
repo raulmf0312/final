@@ -153,9 +153,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <span class="font-bold text-xl pb-3">Reviews:</span>
           ${reviews}
 
-          <form class="mt-4">
+          <form netlify class="mt-4">
             <input type="text" id="review-body-${listing.fundraiserId}" class=" mr-2 rounded-lg border px-2 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Add a review...">
-            <input type="number" id="review-rating-${listing.fundraiserId}" class="mr-2 rounded-lg border px-2 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Out of 5 stars">
+            <input type="number" min="0" max="5"  id="review-rating-${listing.fundraiserId}" class="mr-2 rounded-lg border px-2 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Out of 5 stars">
             <button id="listing-review-button-${listing.fundraiserId}" class="py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">Post</button>
           </form>
 
